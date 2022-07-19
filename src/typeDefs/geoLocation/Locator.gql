@@ -1,0 +1,13 @@
+type Query {
+  """
+  Returns a boolean ascertaining the address or coordinate provided is within our reach.
+
+  @example
+  ```
+  geoLocator(address: "123 Main St, New York, NY 10001", coordinates: { lat: 40.7128, long: -74.0060]})) {
+    isInReach: true
+  }
+  ```
+  """
+  geoLocator(address: String, lat: Float!, lng: Float!): Boolean
+}
