@@ -1,16 +1,16 @@
-version: 2 # use CircleCI 2.0
+version: 2.1 # use CircleCI 2.1
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
     working_directory: ~/geo-locator # directory where steps will run
     docker: # run the steps with Docker
-      - image: circleci/node:carbon # ...with this image as the primary container; this is where all `steps` will run
+      - image: cimg/node:12.13.0 # ...with this image as the primary container; this is where all `steps` will run
         environment:
           GOOGLE_API_KEY: '${GOOGLE_API_KEY}'
     steps: # a collection of executable commands
       - checkout # special step to check out source code to working directory
       - run:
           name: Install project dependencies
-          command: sudo npm install -g npm@latest && npm install
+          command: sudo npm install -g npm@6.13.4 && npm install
       - restore_cache: # special step to restore the dependency cache
           # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
           key: dependency-cache-{{ checksum "package.json" }}

@@ -5,6 +5,8 @@ const resolvers = require('./resolvers');
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  introspection: true,
+  playground: true,
   context({ req, connection }) {
     if (connection) {
       return { ...connection.context };
@@ -12,6 +14,8 @@ const server = new ApolloServer({
   },
 });
 
-server.listen(3000).then(({ url }) => {
+const port = parseInt(process.env.PORT, 10) || 3000;
+
+server.listen(port).then(({ url }) => {
   console.log(`🚀 Server ready at ${url}`);
 });
