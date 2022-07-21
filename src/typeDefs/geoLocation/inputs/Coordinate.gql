@@ -1,0 +1,5 @@
+# Input for coordinate.
+input Coordinate {
+  lat: Float!
+  lng: Float!
+}

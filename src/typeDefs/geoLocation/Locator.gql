@@ -4,10 +4,8 @@ type Query {
 
   @example
   ```
-  geoLocator(address: "123 Main St, New York, NY 10001", coordinates: { lat: 40.7128, long: -74.0060]})) {
-    isInReach: true
-  }
+  geoLocator(address: "123 Main St, New York, NY 10001", coordinate: { lat: 40.7128, lng: -74.0060})
   ```
   """
-  geoLocator(address: String, lat: Float!, lng: Float!): Boolean
+  geoLocator(address: String, coordinate: Coordinate): Boolean
 }
